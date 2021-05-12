@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Livros\" />
+    <ProjectReference Include="..\..\Infra\TheoLivraria.Infra\TheoLivraria.Infra.csproj" />
   </ItemGroup>
 
 </Project>
