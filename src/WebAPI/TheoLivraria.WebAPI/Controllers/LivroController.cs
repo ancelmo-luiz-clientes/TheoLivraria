@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using TheoLivraria.Dominio.IRepositories;
 using TheoLivraria.Historia.Livros;
@@ -38,7 +36,7 @@ namespace TheoLivraria.WebAPI.Controllers
             return Ok(new { msg = "Livro criado com sucesso" });
         }
 
-        [HttpPut("alterar")]
+        [HttpPut("alterar/{id}")]
         public async Task<IActionResult> Alterar(int id, [FromBody] LivroViewModel livroViewModel)
         {
             if (id != livroViewModel.Id)
@@ -49,7 +47,7 @@ namespace TheoLivraria.WebAPI.Controllers
 
             var livro = LivroFactory.MapearLivro(livroViewModel);
 
-            await _alterarLivro.Executar(livro);
+            await _alterarLivro.Executar(id, livro);
 
             return Ok(new { msg = "Livro alterado com sucesso" });
         }

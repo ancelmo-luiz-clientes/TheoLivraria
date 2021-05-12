@@ -17,11 +17,14 @@ namespace TheoLivraria.Historia.Livros
             _livroRepository = livroRepository;
         }
 
-        public async Task Executar(Livro livro)
+        public async Task Executar(int id, Livro livro)
         {
             try
             {
-                await _livroRepository.Atualizar(livro);
+                var dadoDoLivro = await _livroRepository.BuscarPorId(id);
+                dadoDoLivro.AtualizarDadosDoLivro(livro.Nome, livro.Editora);
+
+                await _livroRepository.Atualizar(dadoDoLivro);
             }
             catch (System.Exception)
             {

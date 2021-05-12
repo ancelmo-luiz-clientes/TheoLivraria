@@ -25,7 +25,6 @@ namespace TheoLivraria.WebAPI.Factories
             var livro = new Livro(livroViewModel.Id, livroViewModel.Nome, livroViewModel.Editora);
 
             return livro;
-
         }
         public static IEnumerable<LivroViewModel> MapearListaDeLivrosViewModel(IEnumerable<Livro> livros)
         {
