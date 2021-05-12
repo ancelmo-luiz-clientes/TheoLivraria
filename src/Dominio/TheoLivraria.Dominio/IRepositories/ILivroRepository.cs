@@ -14,6 +14,8 @@ namespace TheoLivraria.Dominio.IRepositories
 
         Task<Livro> BuscarPorId(int id);
 
+        Task<Livro> BuscarPorNome(string nome);
+
         Task<IEnumerable<Livro>> ListarTodos();
     }
 }

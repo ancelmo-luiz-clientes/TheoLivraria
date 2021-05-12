@@ -30,6 +30,12 @@ namespace TheoLivraria.Infra.Persistencia
             return livro;
         }
 
+        public async Task<Livro> BuscarPorNome(string nome)
+        {
+            var livro = await _dataContext.Livros.FirstOrDefaultAsync(x => x.Nome == nome);
+            return livro;
+        }
+
         public async Task Criar(Livro livro)
         {
             _dataContext.Livros.Add(livro);
@@ -44,7 +50,7 @@ namespace TheoLivraria.Infra.Persistencia
 
         public async Task<IEnumerable<Livro>> ListarTodos()
         {
-            return await _dataContext.Livros.AsNoTracking().ToListAsync();
+            return await _dataContext.Livros.AsNoTracking().OrderBy(x => x.Nome).ToListAsync();
         }
     }
 }

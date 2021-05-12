@@ -20,6 +20,11 @@ namespace TheoLivraria.Historia.Livros
             return await _livroRepository.BuscarPorId(id);
         }
 
+        public async Task<Livro> BuscarPorNome(string nome)
+        {
+            return await _livroRepository.BuscarPorNome(nome);
+        }
+
         public async Task<IEnumerable<Livro>> ListarTodos()
         {
             var imoveis = await _livroRepository.ListarTodos();

@@ -29,6 +29,10 @@ namespace TheoLivraria.WebAPI.Controllers
         [HttpPost("criar")]
         public async Task<IActionResult> Criar([FromBody] LivroViewModel livroViewModel)
         {
+            var livroExistente = await _consultarLivro.BuscarPorNome(livroViewModel.Nome);
+            if (livroExistente != null)
+                return NotFound(new { msg = "Livro já cadastrado na biblioteca" });
+
             var livro = LivroFactory.MapearLivro(livroViewModel);
 
             await _criarLivro.Executar(livro);
